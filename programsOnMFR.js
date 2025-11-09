@@ -12,80 +12,94 @@ const addUinque = (array, element) => {
 }
 
 //# ifEqual to do somthing
-const ifEqual = (count, value, index, array, matchValue = 'blue') => {
-  return value === matchValue ? count + 1 : count;
+const ifEqual = (info, value) => {
+  const count = info[0];
+  const matchValue = info[1];
+
+  if (value === matchValue) {
+    info[0] = count + 1;
+  }
+
+  return info;
 }
 
 //# 1. Festival Ribbon Count
-const ribbons = ["red", "blue", "red", "green", "red"];
-const blueRibbonsCount = ribbons.reduce(ifEqual, 0);
-console.log("1. Festival Ribbon Count: ", blueRibbonsCount)
+const ribbonCount = (ribbons) => {
+  const blueRibbonsCount = (ribbons.reduce(ifEqual, [0, "blue"])[0]);
+  return blueRibbonsCount;
+};
 
 //# 2. Stargazing Log
-const logs = [["Orion", "Leo"], ["Taurus"], ["Orion", "Gemini"]];
-const constellationsList = logs.flat().reduce(addUinque, []);
-
-console.log("2. Stargazing Log", constellationsList);
+const constellationsList = (logs) => {
+  const list = logs.flat().reduce(addUinque, [])
+  return list;
+}
 
 //# 3. Birdwatching Duplicate Removal
-const birsdsSeen = ["sparrow", "crow", "sparrow", "eagle", "crow"];
-const speciesList = birsdsSeen.reduce(addUinque, []);
-
-console.log("3. Birdwatching Duplicate Removal", speciesList);
+const speciesList = (birsdsSeen) => {
+  const list = birsdsSeen.reduce(addUinque, []);
+  return list;
+}
 
 // 4. Classroom Attendance Check
-const hourAttendance = [["Asha", "Ravi", "Neel"], ["Ravi"], ["Asha", "Meera"]];
-const distinctList = hourAttendance.flat().reduce(addUinque, []);
-
-console.log("4. Classroom Attendance Check", distinctList);
+const attendedAtLeastOnce = (hourAttendance) => {
+  const list = hourAttendance.flat().reduce(addUinque, []);
+  return list;
+}
 
 // 5. Candy Jar Stocking
-const storeLog = [[5, 3], [2], [4, 1]];
-const totalCandies = storeLog.flat().reduce((total, value) => total + value, 0);
-
-console.log("5. Candy Jar Stocking", totalCandies);
+const totalCandies = (storeLog) => {
+  const total = storeLog.flat().reduce((total, value) => total + value, 0);
+  return total;
+}
 
 //6. Music Rehearsal Notes
-const notes = [["mi", "fa", "so"], ["do", "mi"], ["fa"]];
-const isDoSung = notes.flat().some(song => song === 'do');
-
-console.log("6. Music Rehearsal Notes", isDoSung);
+const isDoSung = (notes) => {
+  const isSung = notes.flat().some(song => song === 'do');
+  return isSung;
+}
 
 // 7. Weather Sensor Validation
-// Several temperature sheets:
-
-// [22, 23]
-// [25, 24, 22]
-// [29]
-// Check if every recorded temperature is below 32.
-
-const sheet = [[22, 23], [25, 24, 22], [29]]
-const allBelow32 = sheet.flat().every(temperature => temperature < 32);
-
-console.log("7. Weather Sensor Validation", allBelow32);  
+const isAllBelow32 = (sheet) => {
+  const isbelow = sheet.flat().every(temperature => temperature < 32);
+  return isbelow;
+}
 
 // 8. Fitness Tracker Miles
-// Runner logs:
-
-// [2, 3, 2]
-// [4]
-// [1, 1]
-// Find the total miles run.
-
-const runnerLogs = [[2, 3, 2], [4], [1, 1, 10]];
-const totalMiles = runnerLogs.flat().reduce((total, value) => total + value, 0);
-
-console.log("8. Fitness Tracker Miles", totalMiles);
+const totalMiles = (runnerLogs) => {
+  const total = runnerLogs.flat().reduce((total, value) => total + value, 0);
+  return total;
+}
 
 // 9. Art Workshop Color Variety
-// Paint colors used in sessions:
+const distinctColors = (colorsUsed) => {
+  const list = colorsUsed.flat().reduce(addUinque, []);
+  return list;
+}
 
-// ["blue", "yellow"]
-// ["yellow", "green"]
-// ["blue"]
-// Find unique colors used.
+// 10. Library Return Counter
+const returnedCount = (booksLog) => {
+  const count = (booksLog.reduce(ifEqual, [0, "Dune"]))[0];
+  return count;
+}
 
-// const usedColor = [["blue", "yellow"], ["yellow", "green"], ["blue"]];
-// const distinctList = hourAttendance.flat().reduce(addUinque, []);
+// result function to print the result
+const result = (title, data, task) => {
+  const result = task(data);
+  console.log(title, result);
+}
 
-// console.log("4. Classroom Attendance Check", distinctList);
+const main = () => {
+  result("1. FestivalRibbonCount :", ["red", "blue", "green", "red"], ribbonCount);
+  result("2. Stargazing Log :", [["Orion", "Leo"], ["Taurus"], ["Orion", "Gemini"]], constellationsList);
+  result("3. Birdwatching :", ["sparrow", "crow", "sparrow", "eagle", "crow"], speciesList);
+  result("4. Classroom Attendance Check", [["Asha", "Ravi", "Neel"], ["Ravi"], ["Asha", "Meera"]], attendedAtLeastOnce);
+  result("5. Candy Jar Stocking", [[5, 3], [2], [4, 1]], totalCandies);
+  result("6. Music Rehearsal Notes", [["mi", "fa", "so"], ["do", "mi"], ["fa"]], isDoSung);
+  result("7. Weather Sensor Validation", [[22, 23], [25, 24, 22], [29]], isAllBelow32);
+  result("8. Fitness Tracker Miles", [[2, 3, 2], [4], [1, 1, 10]], totalMiles);
+  result("9. Art Workshop Color Variety", [["blue", "yellow"], ["yellow", "green"], ["blue", "red"]], distinctColors);
+  result("10. Library Return Counter", ["Dune", "Dune", "Foundation", "Dune", "Dune"], returnedCount)
+}
+
+main();
