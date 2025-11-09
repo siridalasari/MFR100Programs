@@ -9,3 +9,14 @@ const reduce = function(array, reducer, initialValue = array[0]) {
 
   return result;
 }
+
+//# 1. Festival Ribbon Count
+const ribbonCount = (ribbons) => {
+  return ribbons.reduce(countBlue, 0);
+};
+
+// 10. Library Return Counter
+const returnedCount = (booksLog) => {
+  const count = (booksLog.reduce(ifEqual, [0, "Dune"]))[0];
+  return count;
+}

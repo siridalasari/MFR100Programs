@@ -4,29 +4,15 @@ const addUinque = (array, element) => {
 
   const elements = array.map(x => x);
 
-  if (!(elements.includes(element))) {
+  if (!(elements.includes(element))) 
     elements.push(element);
-  }
 
   return elements;
 }
 
-//# ifEqual to do somthing
-const ifEqual = (info, value) => {
-  const count = info[0];
-  const matchValue = info[1];
-
-  if (value === matchValue) {
-    info[0] = count + 1;
-  }
-
-  return info;
-}
-
 //# 1. Festival Ribbon Count
 const ribbonCount = (ribbons) => {
-  const blueRibbonsCount = (ribbons.reduce(ifEqual, [0, "blue"])[0]);
-  return blueRibbonsCount;
+  return ribbons.reduce((count, book) => book === 'Dune' ? count + 1 : count, 0);
 };
 
 //# 2. Stargazing Log
@@ -79,9 +65,8 @@ const distinctColors = (colorsUsed) => {
 
 // 10. Library Return Counter
 const returnedCount = (booksLog) => {
-  const count = (booksLog.reduce(ifEqual, [0, "Dune"]))[0];
-  return count;
-}
+  return booksLog.reduce((count, book) => book === 'Dune' ? count + 1 : count, 0);
+};
 
 // result function to print the result
 const result = (title, data, task) => {
