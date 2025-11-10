@@ -12,42 +12,42 @@ const addUinque = (array, element) => {
 const ribbonCount = (ribbons) => ribbons.reduce((count, book) => book === 'Dune' ? count + 1 : count, 0);
 
 //# 2. Stargazing Log
-const constellationsList = (logs) => logs.flat().reduce(addUinque, []);
+const constellationsList = (logs) => logs.flatMap(x => x).reduce(addUinque, []);
 
 //# 3. Birdwatching Duplicate Removal
 const speciesList = (birsdsSeen) => birsdsSeen.reduce(addUinque, []);
 
 //# 4. Classroom Attendance Check
-const attendedAtLeastOnce = (hourAttendance) => hourAttendance.flat().reduce(addUinque, []);
+const attendedAtLeastOnce = (hourAttendance) => hourAttendance.flatMap(x => x).reduce(addUinque, []);
 
 //# 5. Candy Jar Stocking
-const totalCandies = (storeLog) => storeLog.flat().reduce((total, value) => total + value, 0);
+const totalCandies = (storeLog) => storeLog.flatMap(x => x).reduce((total, value) => total + value, 0);
 
 //# 6. Music Rehearsal Notes
-const isDoSung = (notes) => notes.flat().some(song => song === 'do');
+const isDoSung = (notes) => notes.flatMap(x => x).some(song => song === 'do');
 
 //# 7. Weather Sensor Validation
-const isAllBelow32 = (sheet) => sheet.flat().every(temperature => temperature < 32);
+const isAllBelow32 = (sheet) => sheet.flatMap(x => x).every(temperature => temperature < 32);
 
 //# 8. Fitness Tracker Miles
-const totalMiles = (runnerLogs) => runnerLogs.flat().reduce((total, value) => total + value);
+const totalMiles = (runnerLogs) => runnerLogs.flatMap(x => x).reduce((total, value) => total + value);
 
 //# 9. Art Workshop Color Variety
-const distinctColors = (colorsUsed) => colorsUsed.flat().reduce(addUinque, []);
+const distinctColors = (colorsUsed) => colorsUsed.flatMap(x => x).reduce(addUinque, []);
 
 //# 10. Library Return Counter
 const returnedCount = (booksLog) => booksLog.reduce((count, book) => book === 'Dune' ? count + 1 : count, 0);
 
 //# 11. Lunchbox Ingredient Inventory
-const distinctIngredients = (ingredients) => ingredients.flat().reduce(addUinque, []);
+const distinctIngredients = (ingredients) => ingredients.flatMap(x => x).reduce(addUinque, []);
 
 //# 12. Choir Harmony Review
-const isSoSung = (notes) => notes.flat().some(song => song === 'so');
+const isSoSung = (notes) => notes.flatMap(x => x).some(song => song === 'so');
 
 
 // //# 13. Vegetable Crate Totals
 // const vTotals = (runnerLogs) => {
-//   return vTotals.flat().reduce((total, value) => total + value;
+//   return vTotals.flatMap(x => x).reduce((total, value) => total + value;
 // }
 
 // //# 14. Post Office Parcel Record
