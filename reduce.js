@@ -20,3 +20,15 @@ const returnedCount = (booksLog) => {
   const count = (booksLog.reduce(ifEqual, [0, "Dune"]))[0];
   return count;
 }
+
+
+const sort = (array) => {
+  const sorted = array.slice();
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if(sorted[i] < sorted[j]) {
+        
+      }
+    }
+  }
+}
